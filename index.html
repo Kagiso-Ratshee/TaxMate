@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tax Mate BW | Botswana tax, simplified.</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav>
+      <div class="brand"><span class="mark">TM</span><div><strong>Tax Mate BW</strong><small>Botswana tax, simplified.</small></div></div>
+      <a href="#calculators" class="nav-cta">Start calculating</a>
+    </nav>
+    <section class="hero-grid">
+      <div>
+        <p class="eyebrow">Botswana tax toolkit</p>
+        <h1>Clean tax calculators for employees, SMEs and finance teams.</h1>
+        <p class="sub">Estimate PAYE, VAT, withholding tax and corporate income tax in seconds. Built as a Phase 1 prototype for your Botswana-first tax-tech idea.</p>
+        <div class="hero-actions"><a class="button primary" href="#calculators">Open calculators</a><a class="button ghost" href="#updates">View tax updates</a></div>
+      </div>
+      <div class="summary-card">
+        <span>Today's quick check</span>
+        <h2>VAT at 14%</h2>
+        <p>Add or remove Botswana VAT instantly and see the VAT fraction.</p>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="trust-strip">
+      <div><strong>PAYE</strong><span>Monthly & annual estimate</span></div>
+      <div><strong>VAT</strong><span>Add / remove / fraction</span></div>
+      <div><strong>WHT</strong><span>Common payment categories</span></div>
+      <div><strong>CIT</strong><span>Company tax estimate</span></div>
+    </section>
+
+    <section id="calculators" class="section">
+      <div class="section-title">
+        <p class="eyebrow">Phase 1 calculators</p>
+        <h2>Choose a calculator</h2>
+      </div>
+      <div class="tabs">
+        <button class="tab active" data-tab="paye">PAYE</button>
+        <button class="tab" data-tab="vat">VAT</button>
+        <button class="tab" data-tab="wht">WHT</button>
+        <button class="tab" data-tab="cit">Corporate Tax</button>
+      </div>
+
+      <div class="calculator active" id="paye">
+        <div class="form-card">
+          <h3>PAYE Calculator</h3>
+          <label>Monthly gross salary (BWP)<input id="monthlySalary" type="number" placeholder="e.g. 50000" /></label>
+          <label>Monthly pension / deductible amount (optional)<input id="monthlyDeduction" type="number" placeholder="e.g. 2500" /></label>
+          <button onclick="calculatePAYE()">Calculate PAYE</button>
+          <p class="note">Prototype uses an editable progressive resident PAYE table in app.js. Validate rates before production launch.</p>
+        </div>
+        <div class="result-card" id="payeResult"></div>
+      </div>
+
+      <div class="calculator" id="vat">
+        <div class="form-card">
+          <h3>VAT Calculator</h3>
+          <label>Amount (BWP)<input id="vatAmount" type="number" placeholder="e.g. 10000" /></label>
+          <label>Mode<select id="vatMode"><option value="add">Add VAT</option><option value="remove">Remove VAT from VAT-inclusive amount</option></select></label>
+          <button onclick="calculateVAT()">Calculate VAT</button>
+        </div>
+        <div class="result-card" id="vatResult"></div>
+      </div>
+
+      <div class="calculator" id="wht">
+        <div class="form-card">
+          <h3>Withholding Tax Calculator</h3>
+          <label>Payment amount (BWP)<input id="whtAmount" type="number" placeholder="e.g. 25000" /></label>
+          <label>Payment type<select id="whtType"><option value="15">Dividends - 15%</option><option value="15">Interest - 15%</option><option value="15">Royalties - 15%</option><option value="15">Management / consultancy fees - 15%</option><option value="3">Construction contract WHT - 3%</option></select></label>
+          <button onclick="calculateWHT()">Calculate WHT</button>
+          <p class="note">Treaty relief, residency and exemptions may change the outcome.</p>
+        </div>
+        <div class="result-card" id="whtResult"></div>
+      </div>
+
+      <div class="calculator" id="cit">
+        <div class="form-card">
+          <h3>Corporate Income Tax Estimator</h3>
+          <label>Taxable profit (BWP)<input id="profit" type="number" placeholder="e.g. 1500000" /></label>
+          <label>Rate<select id="citRate"><option value="22">Standard company rate - 22%</option><option value="15">Manufacturing / IFSC-style reduced rate - 15%</option><option value="55">Mining-style illustrative rate - 55%</option></select></label>
+          <button onclick="calculateCIT()">Estimate tax</button>
+          <p class="note">This is a high-level estimator only. Mining, IFSC and special regimes need technical validation.</p>
+        </div>
+        <div class="result-card" id="citResult"></div>
+      </div>
+    </section>
+
+    <section id="updates" class="section updates">
+      <div class="section-title"><p class="eyebrow">Tax updates</p><h2>Plain-English tax notes</h2></div>
+      <div class="update-grid">
+        <article><h3>Reverse VAT explained</h3><p>Who accounts for VAT, when it applies, and why controls matter.</p></article>
+        <article><h3>Thin capitalisation decoded</h3><p>Simple guide to debt-to-equity limits and arm’s length debt.</p></article>
+        <article><h3>Mining tax changes</h3><p>Track how capital allowances and loss ringfencing affect models.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Tax Mate BW</strong><span>Educational prototype. Not official BURS advice.</span>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
